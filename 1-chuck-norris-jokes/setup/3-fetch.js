@@ -6,15 +6,11 @@ const text = get(".content")
 const img = get(".container img")
 let icon = ""
 
-btn.addEventListener("click", async() => {
-    try {
-        const data = await fetch(url)
-        const response = await data.json()
-        displayData(response)
-
-    } catch (error) {
-        console.log(error)
-    }
+btn.addEventListener("click", () => {
+    fetch(url)
+    .then((data) => data.json())
+    .then((jsonResponse) => displayData(jsonResponse))
+    .catch(error => console.log(error))
 })
 
 function displayData(/*data*/{value: joke, icon_url}) {
